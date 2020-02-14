@@ -17,13 +17,17 @@ hbs.registerPartials(partialsPath);
 app.use(express.static(publicDirectoryPath));
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Express Server' })
-})
+  res.render('index', { title: 'Express Server', author: 'CM' })
+});
 
 app.get('/about', (req, res) => {
-  res.render('about', { title: 'About me' })
-})
+  res.render('about', { title: 'About me', author: 'CM' })
+});
+
+app.get('*', (req, res) => {
+  res.render('404', { title: 'Nothing to show here!', author: 'CM' })
+});
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
-})
+});
